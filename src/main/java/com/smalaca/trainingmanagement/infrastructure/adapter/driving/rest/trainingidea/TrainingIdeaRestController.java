@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.UUID;
 
 @RequestMapping("/training-idea")
-public class RestTrainingIdeaController {
+public class TrainingIdeaRestController {
     private final TrainingIdeaApplicationService service;
 
-    RestTrainingIdeaController(TrainingIdeaApplicationService service) {
+    TrainingIdeaRestController(TrainingIdeaApplicationService service) {
         this.service = service;
     }
 
