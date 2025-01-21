@@ -1,0 +1,19 @@
+package com.smalaca.trainingmanagement.infrastructure.adapter.driving.rest.trainingidea;
+
+import com.smalaca.trainingmanagement.application.trainingidea.TrainingIdeaApplicationService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/training-idea")
+public class RestTrainingIdeaController {
+    private final TrainingIdeaApplicationService service;
+
+    RestTrainingIdeaController(TrainingIdeaApplicationService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public void register() {
+        service.register();
+    }
+}
