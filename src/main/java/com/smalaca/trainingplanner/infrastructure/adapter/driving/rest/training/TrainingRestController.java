@@ -2,7 +2,10 @@ package com.smalaca.trainingplanner.infrastructure.adapter.driving.rest.training
 
 import com.smalaca.trainingplanner.application.training.TrainingApplicationService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.UUID;
 
 @RequestMapping("/training")
 public class TrainingRestController {
@@ -15,5 +18,15 @@ public class TrainingRestController {
     @PostMapping
     public void book() {
         service.book();
+    }
+
+    @PutMapping("/move")
+    public void move(UUID trainingId) {
+        service.move(trainingId);
+    }
+
+    @PutMapping("/cancel")
+    public void cancel(UUID trainingId) {
+        service.cancel(trainingId);
     }
 }
