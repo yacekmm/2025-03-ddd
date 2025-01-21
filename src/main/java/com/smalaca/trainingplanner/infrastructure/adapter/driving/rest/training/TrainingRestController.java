@@ -4,9 +4,11 @@ import com.smalaca.trainingplanner.application.training.TrainingApplicationServi
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+@RestController
 @RequestMapping("/training")
 public class TrainingRestController {
     private final TrainingApplicationService service;
