@@ -13,9 +13,13 @@ public class TrainingDraft {
     private List<String> categories;
 
     public void addDetails(AddTrainingDraftDetailsDomainCommand command) {
+        if (command.categories().size() < 1) {
+            throw new MissingCategoriesException(number);
+        }
+
+        categories = command.categories();
         trainingDays = command.trainingDays();
         price = command.price();
         description = command.description();
-        categories = command.categories();
     }
 }
