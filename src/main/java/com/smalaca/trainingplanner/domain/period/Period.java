@@ -25,4 +25,8 @@ public class Period {
         long diffInDays = start.until(end, ChronoUnit.DAYS);
         return diffInDays > days;
     }
+
+    public boolean withinTheSame(Period period) {
+        return !start.isAfter(period.end) || !end.isBefore(period.start);
+    }
 }

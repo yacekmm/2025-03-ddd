@@ -27,4 +27,8 @@ public class Training {
     public void cancel() {
 
     }
+
+    boolean withinTheSame(Period period) {
+        return this.period.withinTheSame(period);
+    }
 }
