@@ -18,6 +18,7 @@ public class DirectTrainingPlannerClient implements TrainingPlanner {
         // TRANSACTIONALITY!!!
         try {
             trainingApplicationService.book(trainingId, participantId);
+            return true;
         } catch (RuntimeException e) {
             return false;
         }
