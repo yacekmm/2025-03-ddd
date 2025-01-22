@@ -1,5 +1,6 @@
 package com.smalaca.trainingmanagement.domain.trainingdraft;
 
+// value object
 public class TrainingDays {
     private final int trainingDays;
 
