@@ -26,7 +26,7 @@ public class Period {
         return diffInDays > days;
     }
 
-    public boolean withinTheSame(Period period) {
+    public boolean doesOverlapWith(Period period) {
         return !start.isAfter(period.end) || !end.isBefore(period.start);
     }
 }

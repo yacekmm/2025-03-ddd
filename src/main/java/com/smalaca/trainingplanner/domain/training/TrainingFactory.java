@@ -26,6 +26,6 @@ public class TrainingFactory {
     private boolean alreadyScheduledFor(CreateTrainingDomainCommand command) {
         List<Training> trainings = trainingRepository.findFor(command.trainingDefinitionId());
         return trainings.stream()
-                .anyMatch(training -> training.withinTheSame(command.period()));
+                .anyMatch(training -> training.doesOverlapWith(command.period()));
     }
 }

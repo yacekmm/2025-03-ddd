@@ -28,8 +28,8 @@ public class Training {
         // TBD
     }
 
-    boolean withinTheSame(Period period) {
-        return this.period.withinTheSame(period);
+    boolean doesOverlapWith(Period period) {
+        return this.period.doesOverlapWith(period);
     }
 
     public void book(UUID participantId) {
