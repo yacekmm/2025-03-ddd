@@ -12,6 +12,11 @@ public class Offer {
     private UUID trainingId;
     private Price price;
 
+    Offer(UUID trainingId, Price price) {
+        this.trainingId = trainingId;
+        this.price = price;
+    }
+
     public Order accept(TrainingPlanner trainingPlanner) {
         if (!trainingPlanner.book(trainingId)) {
             throw new NotAvailabeTrainingException(trainingId);
