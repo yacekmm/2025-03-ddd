@@ -24,7 +24,7 @@ public class TrainingApplicationService {
     public void schedule(CreateTrainingCommand command) {
         TrainingCode trainingCode = new TrainingCode(command.trainingCode());
         Period period = Period.create(command.start(), command.end());
-        TrainingType trainingType = TrainingType.valueOf(command.trainingType());
+        TrainingType trainingType = TrainingType.create(command.trainingType());
         CreateTrainingDomainCommand domainCommand = new CreateTrainingDomainCommand(command.trainingDefinitionId(), trainingCode, period, trainingType);
 
         Training training = trainingFactory.create(domainCommand);
