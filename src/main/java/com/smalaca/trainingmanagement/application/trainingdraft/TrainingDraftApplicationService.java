@@ -21,7 +21,7 @@ public class TrainingDraftApplicationService {
         TrainingDraft trainingDraft = repository.findById(command.trainingDraftId());
         Price price = new Price(command.price());
         TrainingDays trainingDays = new TrainingDays(command.trainingDays());
-        AddTrainingDraftDetailsDomainCommand domainCommand = new AddTrainingDraftDetailsDomainCommand(price, trainingDays, command.description());
+        AddTrainingDraftDetailsDomainCommand domainCommand = new AddTrainingDraftDetailsDomainCommand(price, trainingDays, command.description(), command.categories());
 
         // akcja z domeny
         trainingDraft.addDetails(domainCommand);
