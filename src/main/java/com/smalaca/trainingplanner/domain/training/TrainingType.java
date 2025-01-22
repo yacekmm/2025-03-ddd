@@ -1,5 +1,6 @@
 package com.smalaca.trainingplanner.domain.training;
 
+// value object
 public enum TrainingType {
     REMOTE, ONSITE;
 
