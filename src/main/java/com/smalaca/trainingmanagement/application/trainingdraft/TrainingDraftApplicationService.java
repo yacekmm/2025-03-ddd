@@ -19,7 +19,7 @@ public class TrainingDraftApplicationService {
 //    public void addDetails(UUID trainingDraftId, AddTrainingDraftDetailsDomainCommand command) {
         // tłumaczenie
         TrainingDraft trainingDraft = repository.findById(command.trainingDraftId());
-        Price price = new Price(command.price());
+        Price price = Price.create(command.price());
         TrainingDays trainingDays = new TrainingDays(command.trainingDays());
         AddTrainingDraftDetailsDomainCommand domainCommand = new AddTrainingDraftDetailsDomainCommand(price, trainingDays, command.description(), command.categories());
 
