@@ -14,7 +14,7 @@ public class TrainingApplicationService {
     }
 
     @Transactional
-    public void book() {
+    public void schedule() {
         Training training = new Training();
 
         repository.save(training);

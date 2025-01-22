@@ -19,7 +19,7 @@ public class TrainingRestController {
 
     @PostMapping
     public void book() {
-        service.book();
+        service.schedule();
     }
 
     @PutMapping("/move")
