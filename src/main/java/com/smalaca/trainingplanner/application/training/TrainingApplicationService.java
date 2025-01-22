@@ -20,7 +20,7 @@ public class TrainingApplicationService {
     @Transactional
     public void schedule(CreateTrainingCommand command) {
         TrainingCode trainingCode = new TrainingCode(command.trainingCode());
-        Period period = new Period(command.start(), command.end());
+        Period period = Period.create(command.start(), command.end());
         TrainingType trainingType = TrainingType.valueOf(command.trainingType());
         CreateTrainingDomainCommand domainCommand = new CreateTrainingDomainCommand(command.trainingDefinitionId(), trainingCode, period, trainingType);
 

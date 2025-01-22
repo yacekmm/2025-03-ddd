@@ -26,7 +26,7 @@ public class TrainingScheduleProposalsApplicationService {
     @Transactional
     public void proposeSlotForTraining(ProposeSlotForTrainingCommand command) {
         TrainingScheduleProposals trainingScheduleProposals = repository.findById(command.trainingScheduleProposalsId());
-        Period period = new Period(command.start(), command.end());
+        Period period = Period.create(command.start(), command.end());
 
         trainingScheduleProposals.proposeSlot(command.participantId(), period);
 
