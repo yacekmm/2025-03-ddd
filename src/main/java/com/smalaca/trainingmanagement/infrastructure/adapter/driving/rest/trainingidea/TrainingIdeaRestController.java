@@ -18,8 +18,8 @@ public class TrainingIdeaRestController {
     }
 
     @PostMapping
-    public void register() {
-        service.register();
+    public void register(UUID trainerId, String name) {
+        service.register(trainerId, name);
     }
 
     @PutMapping("/accept")
