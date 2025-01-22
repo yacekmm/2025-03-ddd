@@ -1,4 +1,4 @@
-package com.smalaca.trainingplanner.domain.training;
+package com.smalaca.trainingplanner.domain.period;
 
 import java.time.LocalDate;
 

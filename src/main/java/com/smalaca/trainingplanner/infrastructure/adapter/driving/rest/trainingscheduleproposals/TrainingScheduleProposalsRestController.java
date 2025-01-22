@@ -1,5 +1,6 @@
 package com.smalaca.trainingplanner.infrastructure.adapter.driving.rest.trainingscheduleproposals;
 
+import com.smalaca.trainingplanner.application.trainingscheduleproposals.ProposeSlotForTrainingCommand;
 import com.smalaca.trainingplanner.application.trainingscheduleproposals.TrainingScheduleProposalsApplicationService;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +18,12 @@ public class TrainingScheduleProposalsRestController {
     }
 
     @PutMapping("/sign")
-    public void signForTraining(UUID trainingId) {
-        service.signForTraining(trainingId);
+    public void signForTraining(UUID trainingScheduleProposalsId, UUID participantId) {
+        service.signForTraining(trainingScheduleProposalsId, participantId);
     }
 
     @PutMapping("/propose")
-    public void proposeSlotForTraining(UUID trainingId) {
-        service.proposeSlotForTraining(trainingId);
+    public void proposeSlotForTraining(ProposeSlotForTrainingCommand command) {
+        service.proposeSlotForTraining(command);
     }
 }

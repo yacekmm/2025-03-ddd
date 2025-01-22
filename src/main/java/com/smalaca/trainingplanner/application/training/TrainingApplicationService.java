@@ -1,6 +1,6 @@
 package com.smalaca.trainingplanner.application.training;
 
-import com.smalaca.trainingplanner.domain.training.Period;
+import com.smalaca.trainingplanner.domain.period.Period;
 import com.smalaca.trainingplanner.domain.training.Training;
 import com.smalaca.trainingplanner.domain.training.TrainingRepository;
 import com.smalaca.trainingplanner.domain.training.TrainingType;
@@ -22,7 +22,7 @@ public class TrainingApplicationService {
         TrainingCode trainingCode = new TrainingCode(command.trainingCode());
         Period period = new Period(command.start(), command.end());
         TrainingType trainingType = TrainingType.valueOf(command.trainingType());
-        CreateTrainingDomainCommand domainCommand = new CreateTrainingDomainCommand(trainingCode, period, trainingType);
+        CreateTrainingDomainCommand domainCommand = new CreateTrainingDomainCommand(command.trainingDefinitionId(), trainingCode, period, trainingType);
 
         Training training = new Training(domainCommand);
 

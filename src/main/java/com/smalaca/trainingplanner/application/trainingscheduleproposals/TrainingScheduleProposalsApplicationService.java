@@ -1,5 +1,6 @@
 package com.smalaca.trainingplanner.application.trainingscheduleproposals;
 
+import com.smalaca.trainingplanner.domain.period.Period;
 import com.smalaca.trainingplanner.domain.trainingscheduleproposals.TrainingScheduleProposals;
 import com.smalaca.trainingplanner.domain.trainingscheduleproposals.TrainingScheduleProposalsRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,19 +15,20 @@ public class TrainingScheduleProposalsApplicationService {
     }
 
     @Transactional
-    public void signForTraining(UUID trainingId) {
-        TrainingScheduleProposals trainingScheduleProposals = repository.findByTrainingId(trainingId);
+    public void signForTraining(UUID trainingScheduleProposalsId, UUID participantId) {
+        TrainingScheduleProposals trainingScheduleProposals = repository.findById(trainingScheduleProposalsId);
 
-        trainingScheduleProposals.sign();
+        trainingScheduleProposals.sign(participantId);
 
         repository.save(trainingScheduleProposals);
     }
 
     @Transactional
-    public void proposeSlotForTraining(UUID trainingId) {
-        TrainingScheduleProposals trainingScheduleProposals = repository.findByTrainingId(trainingId);
+    public void proposeSlotForTraining(ProposeSlotForTrainingCommand command) {
+        TrainingScheduleProposals trainingScheduleProposals = repository.findById(command.trainingScheduleProposalsId());
+        Period period = new Period(command.start(), command.end());
 
-        trainingScheduleProposals.proposeSlot();
+        trainingScheduleProposals.proposeSlot(command.participantId(), period);
 
         repository.save(trainingScheduleProposals);
     }
