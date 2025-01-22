@@ -1,5 +1,6 @@
 package com.smalaca.trainingplanner.infrastructure.adapter.driving.rest.training;
 
+import com.smalaca.trainingplanner.application.training.CreateTrainingCommand;
 import com.smalaca.trainingplanner.application.training.TrainingApplicationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,8 +19,8 @@ public class TrainingRestController {
     }
 
     @PostMapping
-    public void book() {
-        service.schedule();
+    public void schedule(CreateTrainingCommand command) {
+        service.schedule(command);
     }
 
     @PutMapping("/move")
