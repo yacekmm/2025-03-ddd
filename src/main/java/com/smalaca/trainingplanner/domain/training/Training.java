@@ -21,14 +21,18 @@ public class Training {
     }
 
     public void move() {
-
+        // TBD
     }
 
     public void cancel() {
-
+        // TBD
     }
 
     boolean withinTheSame(Period period) {
         return this.period.withinTheSame(period);
+    }
+
+    public void book(UUID participantId) {
+        // TBD
     }
 }

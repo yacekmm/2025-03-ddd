@@ -4,6 +4,7 @@ import com.smalaca.trainingplanner.application.training.CreateTrainingCommand;
 import com.smalaca.trainingplanner.application.training.TrainingApplicationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,10 @@ public class TrainingRestController {
     @PutMapping("/cancel")
     public void cancel(UUID trainingId) {
         service.cancel(trainingId);
+    }
+
+    @PutMapping("/book")
+    public void book(@RequestBody BookingDto dto) {
+        service.book(dto.trainingId(), dto.participantId());
     }
 }

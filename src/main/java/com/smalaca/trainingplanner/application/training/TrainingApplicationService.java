@@ -49,4 +49,13 @@ public class TrainingApplicationService {
 
         repository.save(training);
     }
+
+    @Transactional
+    public void book(UUID trainingId, UUID participantId) {
+        Training training = repository.findById(trainingId);
+
+        training.book(participantId);
+
+        repository.save(training);
+    }
 }

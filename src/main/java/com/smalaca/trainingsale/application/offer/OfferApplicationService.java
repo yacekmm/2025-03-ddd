@@ -24,8 +24,8 @@ public class OfferApplicationService {
     }
 
     @Transactional
-    public void choose(UUID trainingId) {
-        Offer offer = offerFactory.create(trainingId);
+    public void choose(UUID trainingId, UUID participantId) {
+        Offer offer = offerFactory.create(trainingId, participantId);
 
         offerRepository.save(offer);
     }

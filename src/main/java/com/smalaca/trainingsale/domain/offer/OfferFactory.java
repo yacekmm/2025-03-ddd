@@ -12,9 +12,9 @@ public class OfferFactory {
         this.trainingPlanner = trainingPlanner;
     }
 
-    public Offer create(UUID trainingId) {
+    public Offer create(UUID trainingId, UUID participantId) {
         Price price = trainingPlanner.priceOf(trainingId);
 
-        return new Offer(trainingId, price);
+        return new Offer(trainingId, participantId, price);
     }
 }
