@@ -1,6 +1,7 @@
 package com.smalaca.trainingplanner.domain.period;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 // value object
 public class Period {
@@ -18,5 +19,10 @@ public class Period {
         }
 
         return new Period(start, end);
+    }
+
+    public boolean lastLongerThanDays(int days) {
+        long diffInDays = start.until(end, ChronoUnit.DAYS);
+        return diffInDays > days;
     }
 }

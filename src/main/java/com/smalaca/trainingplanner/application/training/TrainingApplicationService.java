@@ -2,6 +2,7 @@ package com.smalaca.trainingplanner.application.training;
 
 import com.smalaca.trainingplanner.domain.period.Period;
 import com.smalaca.trainingplanner.domain.training.Training;
+import com.smalaca.trainingplanner.domain.training.TrainingFactory;
 import com.smalaca.trainingplanner.domain.training.TrainingRepository;
 import com.smalaca.trainingplanner.domain.training.TrainingType;
 import com.smalaca.trainingplanner.domain.training.commands.CreateTrainingDomainCommand;
@@ -12,9 +13,11 @@ import java.util.UUID;
 
 public class TrainingApplicationService {
     private final TrainingRepository repository;
+    private final TrainingFactory trainingFactory;
 
-    TrainingApplicationService(TrainingRepository repository) {
+    TrainingApplicationService(TrainingRepository repository, TrainingFactory trainingFactory) {
         this.repository = repository;
+        this.trainingFactory = trainingFactory;
     }
 
     @Transactional
@@ -24,7 +27,7 @@ public class TrainingApplicationService {
         TrainingType trainingType = TrainingType.valueOf(command.trainingType());
         CreateTrainingDomainCommand domainCommand = new CreateTrainingDomainCommand(command.trainingDefinitionId(), trainingCode, period, trainingType);
 
-        Training training = new Training(domainCommand);
+        Training training = trainingFactory.create(domainCommand);
 
         repository.save(training);
     }
