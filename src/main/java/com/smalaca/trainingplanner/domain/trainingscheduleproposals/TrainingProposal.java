@@ -4,7 +4,7 @@ import com.smalaca.trainingplanner.domain.period.Period;
 
 import java.util.UUID;
 
-// entity? value object?
+// entity
 class TrainingProposal {
     private static final Period NO_PERIOD = null;
 
@@ -22,5 +22,9 @@ class TrainingProposal {
 
     static TrainingProposal create(UUID participantId, Period period) {
         return new TrainingProposal(participantId, period);
+    }
+
+    boolean isFor(UUID participantId) {
+        return this.participantId.equals(participantId);
     }
 }

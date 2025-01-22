@@ -13,10 +13,23 @@ public class TrainingScheduleProposals {
     private List<TrainingProposal> proposals = new ArrayList<>();
 
     public void sign(UUID participantId) {
-        proposals.add(TrainingProposal.create(participantId));
+        add(participantId, TrainingProposal.create(participantId));
     }
 
     public void proposeSlot(UUID participantId, Period period) {
-        proposals.add(TrainingProposal.create(participantId, period));
+        add(participantId, TrainingProposal.create(participantId, period));
+    }
+
+    private void add(UUID participantId, TrainingProposal trainingProposal) {
+        if (hasProposalFor(participantId)) {
+            throw new AlreadyRegisteredProposalException(participantId);
+        }
+
+        proposals.add(trainingProposal);
+    }
+
+    private boolean hasProposalFor(UUID participantId) {
+        return proposals.stream()
+                .anyMatch(existingProposal -> existingProposal.isFor(participantId));
     }
 }
